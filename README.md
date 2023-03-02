@@ -1,4 +1,4 @@
-# Scheduled Shutdown and Startup using Azure Tags and Azure Automation
+# Simple cheduled Shutdown and Startup using Azure Tags and Azure Automation
  
 This script is used to automate the shutdown and startup of virtual machines in Azure based on their tags.
 
