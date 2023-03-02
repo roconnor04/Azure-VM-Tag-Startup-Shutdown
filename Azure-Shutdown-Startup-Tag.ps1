@@ -2,8 +2,8 @@
 Connect-AzAccount -Identity
 
 # Get all Virtual Machines with the tag "ShutdownTime"
-$vmsShutdown = Get-AzVM | Where-Object {$_.Tags.Keys -contains "ShutdownTime"}
-$vmsStartup = Get-AzVM | Where-Object {$_.Tags.Keys -contains "StartTime"}
+$vmsShutdown = Get-AzVM | Where-Object {($_.Tags.Keys -contains "ShutdownTime") -and ($_.PowerState -eq 'VM running')}
+$vmsStartup = Get-AzVM | Where-Object {($_.Tags.Keys -contains "StartTime") -and ($_.PowerState -eq 'VM deallocated')}
 # Loop through each VM
 foreach ($vm in $vmsShutdown) {
     # Get the value of the ShutdownTime tag
