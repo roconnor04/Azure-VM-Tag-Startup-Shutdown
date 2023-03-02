@@ -28,3 +28,4 @@ To run this script in an Azure Automation account using a managed identity, you 
     
 6.  Save and publish the runbook.
 
+or refer to [https://learn.microsoft.com/en-us/azure/automation/enable-managed-identity-for-automation](or%20refer%20to%20%20see%20-%20https://learn.microsoft.com/en-us/azure/automation/enable-managed-identity-for-automation)
