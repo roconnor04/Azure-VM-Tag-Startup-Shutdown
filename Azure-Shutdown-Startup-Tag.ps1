@@ -9,7 +9,7 @@ $subscriptions = @"
 
 foreach ($subscription in $subscriptions) {
 
- Set-AzContext -SubscriptionId $subscriptionid  
+ Set-AzContext -SubscriptionId $subscription 
 
     # Get all Virtual Machines with the tag "ShutdownTime"
     $vmsShutdown = Get-AzVM -status | Where-Object { ($_.Tags.Keys -contains "ShutdownTime") -and ($_.PowerState -eq 'VM running') }
