@@ -43,9 +43,16 @@ foreach ($subscription in $subscriptions) {
         $currentTime = Get-Date
         $timeDiff = ($currentTime - $startupTime).TotalMinutes
     
+        # Do not start VM on weekends when SkipWeekendStartup tag is present
+        if ((($currentTime.DayOfWeek -eq 'Saturday') -or ($currentTime.DayOfWeek -eq 'Sunday')) -and
+            ($vm.Tags.Keys -contains 'SkipWeekendStartup')) {
+            Write-Output "Skipping startup of VM $($vm.Name) in $($vm.ResourceGroupName) because SkipWeekendStartup tag is present and it's weekend."
+            continue
+        }
+
         # Compare the value of the tag with the current time
         if ($timeDiff -le 60 -and $timeDiff -ge 0) {
-            # Shut down the VM
+            # Start up the VM
             Write-Output "Starting VM $($vm.Name) in $($vm.ResourceGroupName) because StartupTime tag value is $($startupTime)."
             Start-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 
