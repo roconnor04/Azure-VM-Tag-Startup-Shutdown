@@ -29,5 +29,6 @@ To run this script in an Azure Automation account using a managed identity, you 
 6.  Save and publish the runbook.
 
 7.  Set the ShutdownTime and StartTime tag on Azure VMs that you want to shutdown and startup with a value of HH:mm i.e 18:30
+8.  Add a `SkipWeekendStartup` tag to a VM if you don't want it to start on weekends.
 
 or refer to [https://learn.microsoft.com/en-us/azure/automation/enable-managed-identity-for-automation]
